@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
+
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+* {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/*
+html {
+  scroll-behavior: smooth;
+} 
+�뒳�씪�씠�뵫 jQuery ���떊�뿉 �씠嫄� 媛��뒫�븯�떎! �븯吏�留� IE�뿉�꽑 �씠寃� �븞癒뱁엳湲곗뿉 JQuery �뵆�윭洹몄씤�쓣 �벖�떎. 
+*/
+
+body {
+  font-size: 15px;
+  margin: 0;
+  color: #222;
+  font-weight: 300;
+}
+
+/* Reset CSS */
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
+h1,h2,h3,h4,h5,
+h6 {
+  margin: 0;
+  /* font-weight: normal; = font-weight: 400 
+    font-weight: bold;  = font-weight: 600 */
+  font-weight: 500;
+  line-height: 1.3em;
+}
+
+input,
+button,
+textarea {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Common CSS */
+.inner {
+  width: 1280px;
+  margin: auto;
+}
+
+/* Header with active class */
+header.active {
+  background-color: #fff;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+header.active .gnb li a {
+  color: #000;
+}
+header.active .banner {
+  /* �듃�옖吏��뀡�쓣 二쇨린 �쐞�빐 display:none�쓣 �븯吏��븡怨�
+  �떎�쓬怨� 媛숈씠 �븯�뒗 嫄곗엫 �뵒�뒪�뵆�젅�씠媛� none�씠硫� �듃�옖吏��뀡�씠 �븞癒뱁옒 */
+  height: 0; 
+  overflow: hidden;
+}
+header.active nav {
+  padding-bottom: 20px;
+}
+
+/* Header */
+header {
+  position: fixed;
+  width: 100%;
+  transition: 0.3s;
+  z-index: 10000; /* �뒪�겕濡ㅽ븯�떎 蹂대㈃ menu遺�遺꾩씠 �닾紐낆씠�굹 �븞蹂댁씠�뒗 寃쎌슦 �씠嫄� �꽔�뼱以��떎 */
+}
+
+.trigger {
+  display: none;
+}
+
+.banner {
+  background-color: #000;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+}
+
+.lnb {
+  width: 1280px;
+  margin: auto;
+  text-align: right;
+}
+
+.lnb a {
+  color: #ddd;
+  margin: 10px;
+}
+
+.lnb a:last-child {
+  margin: 0;
+}
+
+.lnb a em {
+  color: #bbb;
+}
+
+nav {
+  width: 1280px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.logo {}
+.gnb {
+  display: flex;
+}
+.gnb li {}
+.gnb li a {
+  color: #fff;
+  margin: 25px;
+}
+.gnb li a:hover {
+  color: #ddd;
+}
+.gnb li a:last-child {
+  margin-right: 0;
+}
+.gnb.active {
+  right: 0;
+}
+
+/* Gototop */
+.gototop {
+  background: linear-gradient(45deg, skyblue, #c1e4f2);
+  border-radius: 50%;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 20px;
+  bottom: -20px;
+  opacity: 0; 
+  transition: 0.5s;
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  line-height: 50px;
+}
+.gototop.active {
+  bottom: 20px;
+  opacity: 1;
+}
+
+/* Intro */
+.intro {
+  height: 100vh;
+  background: url(../images/intro.jpg) no-repeat center center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+}
+
+.intro .heading {
+  color: #fff;
+  text-align: center;
+}
+
+.intro .heading h1 {
+  font-size: 56px;
+  margin-bottom: 30px;
+}
+
+.intro .heading p {
+  font-size: 22px;
+  line-height: 1.5em;
+  padding: 0 150px;
+}
+
+/* About Section */
+.about-content {
+  display: flex;
+  padding: 150px 0;
+}
+
+.about-content div {
+  padding: 30px;
+}
+
+.desc {
+  text-align: center;
+  flex: 3;
+}
+
+.desc h3 {
+  font-size: 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.desc p {
+  font-size: 16px;
+}
+
+.desc a {
+  color: #c25a3a;
+  font-weight: bold;
+}
+
+.desc a:hover {
+  text-decoration: underline;
+}
+
+.photo {
+  flex: 2;
+}
+
+.photo img {
+  width: 100%;
+  border-radius: 40% 60% 65% 35% / 40% 45% 55% 60%;
+}
+
+/* Ranking Section */
+.ranking {
+  background-color: #f4f4f4;
+}
+
+.ranking-content {
+  padding: 100px 0;
+}
+
+.ranking-content h2 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.items {
+  display: flex;
+  justify-content: space-between;
+}
+
+.item {
+  width: 390px;
+  height: 600px;
+  border-radius: 30px 0 30px 0;
+  background-color: #fff;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  /*�삤踰꾪뵆濡쒖슦瑜� �뼱�뵒�떎 �꽔�깘�뿉 �뵲�씪 border-radius媛� �떖�씪吏�!*/
+}
+
+.up-image {
+  /*諛붾줈 css�뿉 background瑜� �꽔�쑝硫� 醫뗭�留� 媛쒕컻�옄�쓽 �엯�옣�쓣 �깮媛곹븯硫�   html�뿉 img瑜� �꽔�뼱�빞 �븳�떎. 洹몃옒�꽌 img瑜� �씠�윴 �떇�쑝濡� 議곗젙�븿!*/
+  width: 390px;
+  height: 285px;
+}
+
+.up-image img {
+  /*width: 100%;*/
+  height: 100%;
+}
+
+.down-desc {
+  padding: 25px;
+  padding-top: 40px;
+}
+
+.down-desc h3 {
+  font-size: 23px;
+  margin: 15px 0;
+}
+
+.down-desc p {
+  font-size: 16px;
+}
+
+.btn-explore {
+  color: #c25a3a;
+  font-weight: 500;
+}
+
+.btn-explore img {
+  transition: 0.3s;
+}
+
+.btn-explore:hover img {
+  /*transform: translateX(10px)*/
+  margin-left: 15px;
+}
+
+.badge {
+  background-color: #e60012;
+  color: #fff;
+  padding: 2px 30px;
+  font-size: 16px;
+}
+
+.badge must {
+  background-color: #e60012;
+
+}
+
+.badge.good {
+  background-color: #00a0e9;
+}
+
+/* Tesimonial Section */
+.testimonial {
+  padding: 100px 0;
+}
+
+.testimonial-content {
+  text-align: center;
+}
+
+.testimonial-content h2 {
+  font-weight: 300;
+  font-size: 30px;
+  text-transform: uppercase;
+}
+
+.testimonial-content h2 b {}
+
+.testimonial-content hr {
+  border: none;
+  height: 4px;
+  width: 120px;
+  background-color: #1c45e3;
+  margin: 30px auto;
+}
+
+.myslider {}
+
+.myslider div {
+  height: 350px;
+  outline: none;
+}
+
+.client {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.client img {
+  width: 85px;
+  border-radius: 50%;
+  margin-right: 20px;
+  margin-left: 40px;
+}
+
+.client span {
+  display: block;
+  /*width: 100%;*/
+  text-align: left;
+  font-size: 18px;
+  line-height: 1.7em;
+}
+
+.client span b {
+  display: block;
+}
+
+.comment {
+  font-size: 16px;
+  line-height: 1.6em;
+  padding-right: 25px;
+}
+
+/* Callaction Section */
+.callaction {
+  height: 350px;
+  background: url(../images/callaction-01.jpg) no-repeat center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.callaction:before {
+  content: '';
+  background: linear-gradient(to right, rgba(67, 13, 67, 0.5), rgba(124, 124, 15, 0.8));
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.callaction-heading {
+  text-align: center;
+  position: relative;
+}
+
+.callaction-heading h2 {
+  color: #fff;
+  font-size: 48px;
+  line-height: 1.3em;
+  font-weight: 300;
+  letter-spacing: -1px;
+  margin-bottom: 50px;
+}
+
+.callaction-heading h2 b {
+  font-weight: 500;
+}
+
+.callaction-heading a {
+  background-color: #2ecc71;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  transition: 0.3s
+}
+
+.callaction-heading a:hover {
+  background-color: green;
+}
+
+/* Blog Section */
+.blog {}
+.blog-content {}
+.blog-content div {}
+.blog-header {
+  margin-top: 50px;
+}
+.blog-header h6,
+.recent-post-items h6,
+.shared-post-items h6 {
+  font-size: 16px;
+  color: #00a0e9;
+}
+.recent-post-items h6 {
+  color: #000;
+  margin-bottom: 30px;
+}
+.shared-post-items h6 {
+  color: #000;
+  margin-bottom: 30px;
+}
+.blog-header h2 {
+  text-decoration: uppercase;
+  font-size: 48px;
+  margin: 30px 0;
+  font-weight: 600;
+}
+.blog-header p {
+  font-size: 28px;
+  line-height: 1.6em;
+}
+.blog-header a {
+  color: crimson;
+}
+.post-content {
+  display: flex;
+  justify-content: space-between;
+}
+.recent-post-items {
+  flex: 3;
+}
+.shared-post-items {
+  width: 360px;
+  margin-left: 20px;
+}
+hr.divider {
+  border: none;
+  border-bottom: 1px solid #ddd;
+  margin: 40px 0;
+}
+.post-item {
+  display: flex;
+
+}
+.shared-post-items .post-item {
+  display: flex;
+  flex-direction: column;
+}
+.shared-post-items .post-item .post-desc {
+  padding-left: 0;
+}
+.shared-post-items .post-item span {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.post-image {
+  width: 360px;
+  overflow: hidden;
+}
+.post-image img {
+  width: 100%;
+  border-radius: 30px 0 30px 0;
+}
+.post-desc {
+  flex: 3;
+  padding: 0 20px;
+}
+.post-desc h6 {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+.post-desc p {
+  font-size: 18px;
+  margin-top: 30px;
+  line-height: 1.5em;
+}
+.post-desc span {
+  font-size: 14px;
+  color: #6d6d6d;
+  display: block;
+  margin-top: 30px;
+}
+
+.post-item:last-child {
+  margin-bottom: 50px;
+}
+
+.recent-post-items hr.divider {
+  margin: 30px 0;
+  border-bottom: 1px solid #eee;
+}
+.shared-post-items hr.divider {
+  margin: 20px 0;
+}
+.shared-post-items .post-item:last-child {
+  margin-top: 15px;
+}
+/* Festival Section */
+.festival {
+  height: 270px;
+  background-color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.festival-heading {
+  text-align: center;
+}
+
+.festival-heading h3 {
+  color: #fff;
+  font-size: 26px;
+  font-weight: 300;
+  margin-bottom: 30px;
+}
+
+.festival-heading span {
+  font-weight: 500;
+}
+
+.btns {}
+
+.btns a {
+  background-color: #fff;
+  width: 200px;
+  display: inline-block;
+  padding: 6px;
+  border-radius: 5px;
+  margin: 5px;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.btns a:nth-child(1) {
+  background-color: #fac53b;
+  color: #fff;
+}
+
+.btns a:nth-child(2) {
+  background-color: #ededed;
+  color: #333;
+}
+
+/* Footer */
+footer {
+  background-color: #000;
+  padding: 20px 0;
+}
+
+.footer-content {
+  display: flex;
+}
+
+.footer-content ul {
+  text-align: center;
+}
+
+.footer-content ul li:first-child {
+  color: #fff;
+}
+
+.footer-content ul li a:hover {
+  text-decoration: underline;
+}
+
+.footer-content ul li a {
+  color: #959595;
+}
+
+.com {
+  flex: 1;
+}
+
+.net {
+  flex: 1;
+}
+
+.help {
+  flex: 2;
+}
+
+.help li:last-child {
+  margin-top: 35px;
+  color: #fff;
+}
